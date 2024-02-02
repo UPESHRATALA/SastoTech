@@ -183,3 +183,26 @@ def place_order():
     else:
         flash('Your cart is Empty')
         return redirect('/')
+
+
+@views.route('/orders')
+@login_required
+def order():
+    orders = Order.query.filter_by(customer_link=current_user.id).all()
+    return render_template('orders.html', orders=orders)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
